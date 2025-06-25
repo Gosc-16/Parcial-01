@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Eventos</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- CABECERA SUPERIOR -->
+    <header class="topbar">
+    <div class="logo">CEVA EVENTOS +</div>
+    <input type="text" id="buscador" placeholder="Buscar eventos...">
+    <div class="usuario">👤 Giordanno</div>
+    </header>
+
+    <!-- PESTAÑAS -->
+    <nav class="tabs">
+    <button class="tab active" data-tab="eventos">Eventos</button>
+    <button class="tab" data-tab="mis-eventos">Mis eventos</button>
+    <!-- <button class="tab" data-tab="subscripciones">Subscripciones</button> Opcional -->
+    </nav>
+
+    <!-- FILTROS -->
+    <section class="filtros">
+    <select id="categoria">
+        <option value="">Categoría</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Deporte">Deporte</option>
+        <option value="Música">Música</option>
+    </select>
+
+    <select id="fecha">
+        <option value="">Fecha</option>
+        <option value="2025-07-15">15/07/2025</option>
+        <option value="2025-07-18">18/07/2025</option>
+        <option value="2025-07-20">20/07/2025</option>
+        <option value="2025-07-22">22/07/2025</option>
+        <option value="2025-07-28">28/07/2025</option>
+        <option value="2025-07-30">30/07/2025</option>
+        <option value="2025-08-01">01/08/2025</option>
+        <option value="2025-08-05">05/08/2025</option>
+        <option value="2025-08-10">10/08/2025</option>
+        <option value="2025-08-12">12/08/2025</option>
+        <option value="2025-08-15">15/08/2025</option>
+    </select>
+
+    <select id="ubicacion">
+        <option value="">Ubicación</option>
+        <option value="Rimac">Rimac</option>
+        <option value="San Isidro">San Isidro</option>
+        <option value="Jesus Maria">Jesus Maria</option>
+        <option value="Barranco">Barranco</option>
+    </select>
+    <button id="limpiar-filtros">Limpiar filtros</button>
+
+    </section>
+
+
+    <!-- CONTENEDORES DE EVENTOS -->
+    <main>
+        <!-- Contenido de la pestaña 'Eventos' -->
+        <div id="eventos" class="tab-content active">
+            <div id="eventos-container" class="eventos-grid">
+                <!-- Las tarjetas de eventos se insertan aquí por JavaScript -->
+            </div>
+        </div>
+
+        <!-- Contenido de la pestaña 'Mis eventos' -->
+        <div id="mis-eventos" class="tab-content">
+            <div id="mis-eventos-container" class="eventos-grid">
+                <!-- Tarjetas de eventos inscritos -->
+            </div>
+        </div>
+    </main>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
