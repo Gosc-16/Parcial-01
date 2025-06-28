@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Reset básico */
 * {
     margin: 0;
@@ -24,6 +22,8 @@ body {
     background-color: #001f54;
     color: white;
     padding: 1rem 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .topbar .logo {
@@ -32,7 +32,8 @@ body {
 }
 
 .topbar input {
-    width: 40%;
+    width: 100%;
+    max-width: 400px;
     padding: 0.5rem;
     border: none;
     border-radius: 4px;
@@ -65,6 +66,61 @@ body {
     font-weight: bold;
 }
 
+/* FORMULARIO DE REGISTRO */
+.registro-cliente {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.registro-cliente h2 {
+    margin-bottom: 1rem;
+}
+
+#form-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#form-cliente input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#form-cliente button {
+    padding: 0.75rem;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#form-cliente button:hover {
+    background-color: #003580;
+}
+
+/* Filtros */
+.filtros {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-direction: column;
+}
+
+.filtros select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
 .filtros button {
     padding: 0.5rem 1rem;
     border: none;
@@ -77,22 +133,6 @@ body {
 
 .filtros button:hover {
     background-color: #bbb;
-}
-
-
-/* Filtros */
-.filtros {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-.filtros select {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
 }
 
 /* Contenedor de contenido */
@@ -108,11 +148,23 @@ main {
     display: block;
 }
 
-/* Contenedor de tarjetas tipo grid */
+/* Contenedor de tarjetas tipo grid: 3 columnas fijas */
 .eventos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;    
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .eventos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .eventos-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Tarjetas de evento */
@@ -145,26 +197,8 @@ main {
 .evento-card button:hover {
     background-color: #003580;
 }
-/* RESPONSIVE GRID */
-.eventos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-/* RESPONSIVE HEADER Y TOPBAR */
-.topbar {
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.topbar input {
-    width: 100%;
-    max-width: 400px;
-}
 
 /* FORMULARIOS Y FILTROS RESPONSIVOS */
-.filtros,
 .crear-evento form {
     flex-direction: column;
 }
@@ -175,4 +209,77 @@ main {
         flex-direction: row;
         flex-wrap: wrap;
     }
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-contenido {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.cerrar-modal:hover {
+    color: #000;
+}
+
+/* ✅ Estilo para el mensaje de registro exitoso (toast) */
+.mensaje-exito {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999;
+    white-space: pre-line;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Mostrar con opacidad para animar */
+.mensaje-exito.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Estilo para mensajes de error en inputs */
+.error {
+    color: #d93025;
+    font-size: 0.9rem;
+    height: 1.2rem;
+    margin-top: 2px;
+    display: block;
 }
